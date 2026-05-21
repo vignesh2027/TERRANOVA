@@ -1,110 +1,159 @@
-# TERRANOVA
-
-**See Earth. Watch Space. Track Everything.**
-
-A premium real-time Earth intelligence dashboard combining Google Maps and NASA APIs in a single HTML file — no build step, no frameworks, no dependencies beyond the API scripts.
-
-**Live →** [vignesh2027.github.io/TERRANOVA](https://vignesh2027.github.io/TERRANOVA/)
-
----
-
-## What it does
-
-TERRANOVA opens with a 22-second cinematic Three.js Earth — realistic textures, atmospheric glow, starfield, smooth orbital camera — then fades into a full-screen live dashboard.
-
-### Google Maps layer
-- Custom dark cartographic style (navy land, blue highways, dark ocean, warm white labels)
-- Street View, satellite, terrain, and hybrid modes
-- Places autocomplete search bar
-- Click any point on Earth → coordinates, country, local time, UTC offset, NASA EPIC imagery of that region
-- Measure distance between any two points
-- Earthquake density heatmap toggle
-- Day/Night terminator overlay
-
-### NASA data panels
-
-| Panel | API | What it shows |
-|---|---|---|
-| **APOD** | `/planetary/apod` | Daily astronomy photo with date picker and full-resolution modal |
-| **Asteroid Radar** | `/neo/rest/v1/feed` | Animated canvas radar — every near-Earth object passing today, sized by diameter, red if hazardous |
-| **EPIC Earth** | `epic.gsfc.nasa.gov` | Full-disc Earth photos from the DSCOVR satellite, cycling every 5 s |
-| **EONET Events** | `eonet.gsfc.nasa.gov/api/v3` | All active wildfires, storms, earthquakes, volcanoes, floods plotted as map markers |
-
-### Live refresh
-- EONET events — every 5 minutes
-- Asteroid feed — every 30 minutes
-- APOD — daily at midnight UTC
-- All responses cached in `localStorage`; stale cache served if an API call fails
-
----
-
-## Stack
-
-- **Three.js r134** — cinematic intro Earth globe
-- **Google Maps JavaScript API** — maps, geocoding, places autocomplete, heatmap, geometry
-- **NASA Open APIs** — APOD, NeoWs, EPIC, EONET (all free)
-- Zero npm, zero build, zero frameworks — plain HTML + CSS + JS in one file
-
----
-
-## Setup
-
-1. Clone or download `index.html`
-2. Open it in a browser served over HTTP (required for the Google Maps key domain check)
-
-The file ships with working API keys for immediate use. To use your own:
-
-- **NASA key** — [api.nasa.gov](https://api.nasa.gov) (free, instant)
-- **Google Maps key** — [console.cloud.google.com](https://console.cloud.google.com) — enable Maps JavaScript API, Places API, Geocoding API, Visualization library
-
-Paste your NASA key in the ⚙ settings panel inside the app. To swap the Maps key, edit the `GM_KEY` variable at the top of the `<script>` block.
-
-### GitHub Pages
-
-The repo is configured to serve from `main /`. Any push to `main` updates the live site automatically.
-
-If the Google Maps tiles are blank on Pages, add `vignesh2027.github.io` to the allowed referrers for your Maps API key in Google Cloud Console.
-
----
-
-## Features at a glance
+<div align="center">
 
 ```
-22s cinematic Three.js Earth intro
-├── Realistic day texture + specular + normal maps
-├── Cloud layer (separate mesh, slightly faster rotation)
-├── Atmospheric glow (inner + outer sphere, additive)
-├── 9,000-point starfield
-└── 7-keyframe eased camera path with city callouts
-
-Full-screen Google Maps
-├── Custom dark style (24 style rules)
-├── EONET natural event markers (SVG icons per category)
-├── Filter chips — toggle event types, badges update live
-├── Collapsible left sidebar (events list) + right panel (space data)
-├── Measure tool — click two points, see km/mi
-├── Heatmap — earthquake density via Maps visualization library
-├── Day/Night terminator circle overlay
-└── Click-to-fly on any event in the sidebar
-
-Right panel
-├── APOD — image, title, date picker, fullscreen explanation modal
-└── NeoWs radar — canvas, rotating sweep, glowing dots, hover details
-
-Status bar — API health indicators, live coordinate display
-Settings panel — swap NASA key without editing code
+████████╗███████╗██████╗ ██████╗  █████╗ ███╗   ██╗ ██████╗ ██╗   ██╗ █████╗
+╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔══██╗████╗  ██║██╔═══██╗██║   ██║██╔══██╗
+   ██║   █████╗  ██████╔╝██████╔╝███████║██╔██╗ ██║██║   ██║██║   ██║███████║
+   ██║   ██╔══╝  ██╔══██╗██╔══██╗██╔══██║██║╚██╗██║██║   ██║╚██╗ ██╔╝██╔══██║
+   ██║   ███████╗██║  ██║██║  ██║██║  ██║██║ ╚████║╚██████╔╝ ╚████╔╝ ██║  ██║
+   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝   ╚═══╝  ╚═╝  ╚═╝
 ```
 
+### *See Earth. Watch Space. Track Everything.*
+
+[![Live Dashboard](https://img.shields.io/badge/LIVE-Dashboard-1a5fb4?style=for-the-badge&logo=globe&logoColor=white)](https://vignesh2027.github.io/TERRANOVA/)
+[![Status](https://img.shields.io/badge/Status-Online-3db87a?style=for-the-badge)](https://vignesh2027.github.io/TERRANOVA/)
+[![Zero Dependencies](https://img.shields.io/badge/Zero-Dependencies-f5f0e8?style=for-the-badge)](https://github.com/vignesh2027/TERRANOVA)
+[![Single File](https://img.shields.io/badge/Single-HTML_File-c8a96e?style=for-the-badge)](https://github.com/vignesh2027/TERRANOVA/blob/main/index.html)
+
+<br>
+
+**[→ Open TERRANOVA](https://vignesh2027.github.io/TERRANOVA/)**
+
+</div>
+
 ---
 
-## Screenshots
+## What You'll Discover
 
-> Map view with active events, asteroid radar, and EPIC Earth panel
+> Everything on this dashboard is happening right now. No simulations. No static data. Every number, every dot on the map, every photograph — pulled live from monitoring networks orbiting and observing our planet and the space around it.
 
-*(Open [the live site](https://vignesh2027.github.io/TERRANOVA/) to see it in action)*
+<br>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🌋 &nbsp;Fires, Storms & Earthquakes
+Every active wildfire, tropical storm, volcanic eruption, and earthquake currently tracked on Earth — plotted as live markers on an interactive globe. Watch the planet breathe.
+
+</td>
+<td width="50%" valign="top">
+
+### 🛸 &nbsp;The Space Station, Live
+The International Space Station moves at 28,000 km/h. Its position updates every 5 seconds. Watch it arc across the globe in real time — and jump there with one click.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### ☄️ &nbsp;Asteroids Passing Earth Today
+A radar sweep showing every near-Earth object making a close approach today. Each dot represents a rock moving through space. Red means potentially hazardous.
+
+</td>
+<td width="50%" valign="top">
+
+### 🔭 &nbsp;Today's View of the Universe
+Every single day, astronomers capture something extraordinary. Today's image lands here automatically — from nebulae to galaxies to phenomena no photograph has ever shown before.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🔴 &nbsp;The Surface of Mars
+The Curiosity rover is currently driving across Mars, sending photographs back across 300 million kilometres of space. The latest ones are here, updated daily.
+
+</td>
+<td width="50%" valign="top">
+
+### 🚀 &nbsp;The Next Rockets to Launch
+Real countdowns to the next orbital launches from spaceports around the world — updated every 30 minutes from the global launch schedule.
+
+</td>
+</tr>
+</table>
 
 ---
 
-## License
+## The Five Worlds
 
-MIT
+TERRANOVA is organized into five distinct dashboards. Navigate with the icon bar on the left, or press **1 – 5** on your keyboard.
+
+<br>
+
+| # | World | What Lives Here |
+|---|-------|-----------------|
+| **1** | 🌍 **Earth** | Full-screen interactive globe with custom dark cartography. Click anywhere for coordinates, local time, and live satellite imagery of that exact spot. Measure distances. Toggle satellite view, earthquake density overlay, and the day/night terminator. |
+| **2** | 🔭 **Space** | Today's Astronomy Picture of the Day in full resolution. A live full-disc view of Earth from 1.5 million km away, cycling through recent captures. Animated asteroid radar showing every near-Earth object passing today. |
+| **3** | 🌋 **Events** | Natural event monitor with category filters. Nothing shows until you choose — select Wildfires, Storms, Earthquakes, Volcanoes, or Floods and watch the markers appear live on the map. |
+| **4** | 🚀 **Missions** | ISS live tracker with altitude and velocity. Curiosity Mars rover photo grid. Upcoming rocket launch countdowns from spaceports worldwide. |
+| **5** | ℹ️ **Guide** | How every feature works. Keyboard shortcuts. Live data refresh rates. Everything you need to get the most from TERRANOVA. |
+
+---
+
+## Open It
+
+```
+https://vignesh2027.github.io/TERRANOVA/
+```
+
+That's it. No installation. No account. No configuration required.
+
+Works in any modern browser. Best experienced full-screen.
+
+---
+
+## Navigating
+
+| Key | Action |
+|-----|--------|
+| `1` | Earth View |
+| `2` | Space Intelligence |
+| `3` | Natural Events |
+| `4` | Mission Center |
+| `5` | Guide |
+| `S` | Toggle satellite imagery |
+| `M` | Measure distances |
+| `Esc` | Close any open panel |
+
+**On the map:** Click anywhere to see location details, local time, and a live satellite photograph of that region from deep space.
+
+**On the Events page:** Nothing appears until you activate a category — your choice, your view.
+
+**On the Missions page:** Click "Fly to ISS" to instantly jump the Earth map to wherever the station is right now.
+
+---
+
+## Live Data Refresh Rates
+
+| Feed | Interval |
+|------|----------|
+| Natural Events | Every 5 minutes |
+| ISS Position | Every 5 seconds |
+| Asteroid Feed | Every 30 minutes |
+| Earth Imagery | Hourly cycles |
+| Daily Astronomy | Refreshes at midnight UTC |
+| Mars Photos | Daily from the rover |
+| Launch Schedule | Every 30 minutes |
+
+All responses are cached locally. If a feed is temporarily unreachable, the last known data is shown automatically.
+
+---
+
+## Built For
+
+Curious people who want to look at the actual state of the world right now.  
+Scientists who want a quick overview without switching between a dozen tabs.  
+Anyone who has ever looked up at the night sky and wondered what's out there.
+
+---
+
+<div align="center">
+
+**TERRANOVA** — *One page. One planet. Everything happening right now.*
+
+[Open Dashboard →](https://vignesh2027.github.io/TERRANOVA/)
+
+</div>
